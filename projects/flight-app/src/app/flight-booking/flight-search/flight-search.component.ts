@@ -37,7 +37,11 @@ export class FlightSearchComponent implements OnInit {
   }
 
   search(): void {
+
+
     if (!this.from || !this.to) return;
+
+    if (this.from === this.to) throw new Error('so geht des oba ned!');
 
     this.flightService
       .load(this.from, this.to, this.urgent);

@@ -24,5 +24,8 @@ export const APP_ROUTES: Routes = [
 ]
 
 export const APP_EXTRA_OPTIONS: ExtraOptions = {
-
+  enableTracing: true,
+  // errorHandler: (err) => {console.debug('router err', err)}
+  // preloadingStrategy:
+  // useHash
 }

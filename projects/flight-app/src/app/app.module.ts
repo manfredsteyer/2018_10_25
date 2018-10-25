@@ -17,11 +17,15 @@ import {SidebarComponent} from './sidebar/sidebar.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
+import { OAuthModule } from 'angular-oauth2-oidc';
+
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
     FlightBookingModule,
+
+    OAuthModule.forRoot(),
 
     FlightCancellingModule,
 

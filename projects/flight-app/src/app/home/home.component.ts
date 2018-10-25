@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import { OAuthService } from 'angular-oauth2-oidc';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,9 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) {
+  constructor(
+    private oauthService: OAuthService,
+    private route: ActivatedRoute) {
   }
 
   needsLogin: boolean;
@@ -20,15 +23,18 @@ export class HomeComponent implements OnInit {
   }
 
   get userName(): string {
-    return this._userName;
+    const claims = this.oauthService.getIdentityClaims();
+    if (!claims) return null;
+    return claims['given_name'];
+              //     ^^------- OIDC
   }
 
   login(): void {
-    this._userName = 'Login will be implemented in another exercise!'
+    this.oauthService.initImplicitFlow();
   }
 
   logout(): void {
-    this._userName = '';
+    this.oauthService.logOut();
   }
 
 

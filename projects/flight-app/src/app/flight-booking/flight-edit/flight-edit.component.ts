@@ -20,4 +20,8 @@ export class FlightEditComponent implements OnInit {
     });
   }
 
+  remove(): void {
+    console.debug('Jetzt würde gelöscht werden, wenn Sie in die Vollversion investiert hätten!');
+  }
+
 }
